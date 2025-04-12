@@ -20,9 +20,20 @@ export class CourseCardComponent {
 
   isImageVisible(){
     console.log('Course:', this.course);
-    console.log('Icon URL:', this.course?.iconUrl);
+    console.log('Icon URL:', this.course.iconUrl);
     return this.course && this.course.iconUrl
   }  
+  
+  cardClasses(){
+
+    if(this.course.category == 'BEGINNER') return ['beginner']
+    // return{
+    //   'beginner':this.course.category == 'BEGINNER',
+    // }
+  }
+  cardStyle(){
+    return {'text-decoration':'underline'}
+  }
 
   onCourseViewed(){
     console.log("card component")
