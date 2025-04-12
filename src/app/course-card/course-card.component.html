@@ -8,9 +8,22 @@
     
         <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
              [src]="course.iconUrl">
-  <ng-template #noImage>
-    <p>No Image Is Available!</p>
-  </ng-template>
+   <div class="course-catagory"> 
+     @switch (course.category) {
+        @case ("BEGINNER") {
+            <div class="category" [ngStyle]="{'background-color': 'lightseagreen', 'color': 'black'}">Beginner</div>
+        }
+        @case ("INTERMEDIATE") {
+            <div class="category" [ngStyle]="{'background-color': '#d6d800', 'color': 'black'}">Intermediate</div>
+        }
+        @case ("ADVANCED") {
+            <div class="category" [ngStyle]="{'background-color': '#599268', 'color': 'black'}">Advanced</div>
+        }
+        @default {
+            <div class="category">Unknown</div>
+        }
+     }
+   </div>
 
     <div class="course-description">
        {{course.longDescription}}
