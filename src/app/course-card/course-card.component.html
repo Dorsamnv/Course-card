@@ -9,7 +9,7 @@
         <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
              [src]="course.iconUrl">
    <div class="course-catagory"> 
-     @switch (course.category) {
+     <!-- @switch (course.category) {
         @case ("BEGINNER") {
             <div class="category" [ngStyle]="{'background-color': 'lightseagreen', 'color': 'black'}">Beginner</div>
         }
@@ -22,11 +22,19 @@
         @default {
             <div class="category">Unknown</div>
         }
-     }
+     } -->
    </div>
 
     <div class="course-description">
        {{course.longDescription}}
     </div>
+
+    <div class="course-catagory" [ngSwitch]="course.category">
+        <div class="category" *ngSwitchCase="'BEGINNER'" [ngStyle]="{'background-color': 'lightseagreen', 'color': 'black'}">Beginner</div>
+        <div class="category" *ngSwitchCase="'INTERMEDIATE'" [ngStyle]="{'background-color': '#d6d800', 'color': 'black'}">Intermediate</div>
+        <div class="category" *ngSwitchCase="'ADVANCED'" [ngStyle]="{'background-color': '#599268', 'color': 'black'}">Advanced</div>
+        <div class="category" *ngSwitchDefault>All Level!</div>
+    </div>
+
     <button (click)="onCourseViewed()">View Course</button>
 </div>
